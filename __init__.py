@@ -5,13 +5,17 @@ from datetime import datetime
 from urllib.request import urlopen
 import sqlite3
                                                                                                                                        
-app = Flask(__name__)   
+app = Flask(_name_)    
+                                                                                                                                       
+@app.route('/')
+def hello_world():
+    return render_template('hello.html') #Comm2
 
 @app.route("/contact/")
-def mafichecontact():
+def MapremiereAPI():
     return render_template("contact.html")
   
-  @app.route('/paris/')
+@app.route('/paris/')
 def meteo():
     response = urlopen('https://api.openweathermap.org/data/2.5/forecast/daily?q=Paris,fr&cnt=16&appid=bd5e378503939ddaee76f12ad7a97608')
     raw_content = response.read()
@@ -28,16 +32,13 @@ def mongraphique():
     return render_template("graphique.html")
 
 @app.route("/histogramme/")
-def monhistogramme():
+def monhistogramme1():
     return render_template("histogramme.html")
 
-@app.route("/contact/")
-def moncontact():
-    return render_template("contact.html")
-                                                                                                                                       
-@app.route('/')
-def hello_world():
-    return render_template('hello.html') #Comm2
+@app.route("/commits/")
+def mescommits():
+    return render_template("commits.html")
   
-if __name__ == "__main__":
+    
+  if _name_ == "_main_":
   app.run(debug=True)
